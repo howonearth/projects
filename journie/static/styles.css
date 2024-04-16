@@ -1,0 +1,109 @@
+/* Size for brand */
+nav .navbar-brand {
+    font-size: xx-large;
+    color: #d1e0e0;
+    padding-left: 50px;
+}
+
+.container-fluid {
+    background-color: #3d5c5c;
+}
+
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.fade-out {
+    animation-name: fade-out;
+}
+
+.animated {
+    animation-duration: 3s;
+    animation-fill-mode: both;
+}
+
+.form-select {
+    display: inline;
+    flex: 1;
+    align-items: center;
+    padding: 2;
+    position: relative;
+    width: auto;
+    box-sizing: border-box;
+    border-width: 2px;
+}
+
+.sat,
+.sun {
+    background-color: #e0ebeb;
+}
+
+
+
+.inline {
+    display: inline-block;
+    width: 20%;
+    height: 3em;
+}
+
+.header {
+    font-family: "Sofia", sans-serif;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.container {
+    width: auto;
+}
+
+.delete-sign {
+    max-width: 1em;
+    max-height: 1em;
+}
+
+.delete-button {
+    opacity: 0.3;
+    height: 2em;
+
+}
+
+.left {
+    text-align: left;
+    padding-left: 50px;
+}
+
+.right {
+    text-align: right;
+    width: auto;
+}
+
+.habit {
+    height: 30px;
+    width: 30px;
+    visibility: visible;
+}
+
+button {
+    border: 3px solid #e0ebeb;
+    background-color: #c2d6d6;
+}
+
+body {
+    background-color: #f0f5f5;
+}
+
+
+.bottom {
+    margin-top: 30px;
+}
+
+.addhabit {
+    margin-top: 20px;
+}
