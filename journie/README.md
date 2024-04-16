@@ -1,3 +1,5 @@
+# CS50 FINAL PROJECT
+
 # JOURNIE: Your month at a glance
 #### Video Demo:  https://youtu.be/Nl6OgiDm2VY
 #### Description:
