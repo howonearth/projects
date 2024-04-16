@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Your Journie
+{% endblock %}
+
+{% block main %}
+    <div class="page">
+
+        <div class="row container">
+
+            <div class="col-sm-4 container calendar">
+                {{ calendar | safe }}
+            </div>
+            <div class="col-sm-4">
+                <p class="header">Events</p>
+                <ul>
+                    {% for event in events %}
+                        <li class="left">{{ event.day }} - {{ event.event }}</li>
+                    {% endfor %}
+                </ul>
+                <form action="/editevents" method="get">
+                    <input name="editevents" type="hidden">
+                    <button type="submit">Edit events</button>
+                </form>
+
+            </div>
+            <div class="col-sm-4">
+                <p class="header">Habits today</p>
+
+                {% for item in list %}
+                    {{ item.habit }} <br>
+                {% endfor %}
+
+
+
+                <form action="/habit" method="get">
+                    <input name="habits" type="hidden">
+                    <button type="submit">Open habit tracker</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <p class="header">Priorities</p>
+                <ul>
+                    {% for priority in priorities %}
+                        <li class="left"> -> {{ priority.priority }}
+                            <form class="inline right" action="/deletepr" method="post">
+                                <input name="id" type="hidden" value="{{ priority.id }}">
+                                <button class="delete-button" type="submit"><img class="delete-sign" src="https://cdn4.iconfinder.com/data/icons/linecon/512/delete-1024.png"></button>
+                            </form>
+                        </li>
+
+                    {% endfor %}
+                </ul>
+                <form action="/addpr" method="post">
+                    <input autocomplete="off" name="priority" placeholder="add a priority" type="text">
+                    <button class="button" type="submit">Add</button>
+                </form>
+            </div>
+            <div class="col-sm-4">
+                <h1 class="header">Success journal</h1>
+                {% for i in success %}
+                    <li class="left">{{ i.day }} - {{ i.success }}
+                        <form class="inline" action="/deletesuccess" method="post">
+                            <input name="id" type="hidden" value="{{ i.id }}">
+                            <button class="delete-button" type="submit"><img class="delete-sign" src="https://cdn4.iconfinder.com/data/icons/linecon/512/delete-1024.png"></button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+            <form action="/addsuccess" method="post">
+                <select name="day" id="day">
+                    <option value="">Day</option>
+                    {% for i in range(days) %}
+                        <option value="{{ i+1 }}">{{ i+1 }}</option>
+                    {% endfor %}
+                </select>
+                <input autocomplete="off" name="success" placeholder="add success" type="text">
+                <button class="button" type="submit">Add</button>
+            </form>
+        </div>
+    </div>
+
+    </div>
+
+{% endblock %}
