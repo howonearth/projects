@@ -30,7 +30,7 @@ class Country:
 
 
 
-TOKEN: Final = '6948890377:AAFOOt0xZ6Z46knPhMnbBk4D8JP64B6uuCg'
+TOKEN: Final = # TOKEN left out for security purpose)
 BOT_USERNAME: Final = "@countries_project_bot"
 
 
