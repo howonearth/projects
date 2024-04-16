@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit events
+{% endblock %}
+
+{% block main %}
+    <h1 class="header">Your events this month</h1>
+    <div class="d-flex justify-content-center container">
+    <ul>
+        {% for event in events %}
+         {{ event.day }} - {{ event.event }}
+            <form class= "inline right" action="/deleteevent" method="post">
+                <input name="id" type="hidden" value="{{ event.id }}">
+                <button class="delete-button" type="submit"><img class="delete-sign" src="https://cdn4.iconfinder.com/data/icons/linecon/512/delete-1024.png"></button>
+            </form>
+            <br>
+        {% endfor %}
+    </ul>
+    </div>
+    <form action="/addevent" method="post">
+        <div class="mb-3">
+                <select name="day" id="day">
+                    <option value="">Day</option>
+                    {% for i in range(days) %}
+                    <option value="{{ i+1 }}">{{ i+1 }}</option>
+                    {% endfor %}
+                </select>
+                <input autocomplete="off" name="event" placeholder="add event" type="text">
+                <button class="button" type="submit">Add</button>
+        </div>
+    </form>
+{% endblock %}
