@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Habit Tracker
+{% endblock %}
+
+{% block main %}
+<div class="row">
+    <h1 class="header">Your habits this month</h1>
+
+
+
+    <table>
+        <tr>
+            <td class="header">Habit</td>
+            {% for day in range(days) %}
+                <td>{{ day + 1 }}</td>
+            {% endfor %}
+            <td>Erase</td>
+        </tr>
+
+
+        {% for item in list %}
+        <tr>
+            <td>{{ item.habit}}</td>
+            {% for day in range(days) %}
+                {% if day + 1 > today %}
+                        <td><img class="habit" src="https://carocim.com/1524-medium_default/carreau-l-blanc.jpg"></td>
+                    {% else %}
+                        {% for habit in habits %}
+                                {% if item.habit == habit.habit %}
+                                    {% if day + 1 == habit.day %}
+                                        {% if habit.done == "yes" %}
+                                        <td><img class="habit" src="https://static.wixstatic.com/media/48c479_0f782b5b4d304ee4a949ac4b4f2748a3~mv2.jpg/v1/fill/w_959,h_958,al_c,q_85,enc_auto/48c479_0f782b5b4d304ee4a949ac4b4f2748a3~mv2.jpg"></td>
+                                        {% else %}
+                                        <td><img class="habit" src="https://media.adeo.com/marketplace/MKP/86216602/b61b5de71d36d15332148c5b015498b3.jpeg?width=650&height=650&format=jpg&quality=80&fit=bounds"></td>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                <td><form action="/deletehabit" method="post">
+                <input name="id" type="hidden" value="{{ item.id }}">
+                <button class="delete-button" type="submit"><img class="delete-sign" src="https://cdn4.iconfinder.com/data/icons/linecon/512/delete-1024.png"></button>
+                </form></td>
+            </tr>
+        {% endfor %}
+
+</table>
+</div>
+<div class="row bottom">
+    <div class="col-sm-6">
+
+    <h1 class="header">- Today -</h1>
+
+    <form action="/done" method="post">
+
+        {% for item in list %}
+            {{ item.habit }}
+            {% for habit in habits %}
+                {% if item.habit == habit.habit %}
+                    {% if habit.day == today %}
+                        {% if habit.done == "yes" %}
+                            <img class="habit" src="https://cdn.pixabay.com/photo/2016/03/31/14/37/check-mark-1292787_1280.png"><br>
+                        {% else %}
+                            <input name="{{ item.habit }}" value="{{ item.habit }}" type="checkbox"><br>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+
+        <button class="button" type="submit">Update</button>
+    </form>
+
+</div>
+<div class="col-sm-6">
+    <h1 class="header">Update habit log</h1>
+    <form action="/update" method="post">
+        <select name="day" id="day">
+          <option value="">Day</option>
+          {% for i in range(today - 1) %}
+          <option value="{{ i+1 }}">{{ i+1 }}</option>
+          {% endfor %}
+      </select>
+      <select name="habit" id="habit">
+        <option value="">Habit</option>
+        {% for item in list %}
+        <option value="{{ item.habit }}">{{ item.habit }}</option>
+        {% endfor %}
+    </select>
+    <select name="done" id="done">
+        <option value="">Done</option>
+        <option value="yes">yes</option>
+    </select>
+
+        <input autocomplete="off" name="update" type="hidden">
+        <button class="button" type="submit">Update</button>
+    </form>
+
+    <div class="addhabit">
+        <p class="header">Add a habit</p>
+        <form action="/addhabit" method="post">
+            <input autocomplete="off" autofocus name="newhabit" placeholder="add a habit" type="text">
+            <button class="button" type="submit">Add</button></form>
+        </div>
+
+</div>
+</div>
+
+
+
+{% endblock %}
