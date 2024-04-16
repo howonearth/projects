@@ -30,7 +30,7 @@ class Country:
 
 
 
-TOKEN: Final = # TOKEN left out for security purpose)
+TOKEN: Final = # TOKEN 
 BOT_USERNAME: Final = "@countries_project_bot"
 
 
