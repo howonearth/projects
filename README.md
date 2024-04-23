@@ -1,5 +1,5 @@
 # Projects
-Please find the list of the projects I have completed so far below:
+Please find the list of the projects I have completed below:
 
 
 [Journie](https://github.com/howonearth/projects/tree/dbdd309e1f6662ded8913815932c0713163b313b/journie) - a web application that helps you get an overview of the events and achievements of the current month. 
